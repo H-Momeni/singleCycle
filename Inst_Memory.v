@@ -1,11 +1,11 @@
 
 //memory unit
-module IMemBank(input memread, input [31:0] address, output reg [31:0] readdata);
+module IMemBank(input memread, input [15:0] address, output reg [15:0] readdata);
  
-  reg [31:0] mem_array [255:0];
+  reg [15:0] mem_array [255:0];
   initial begin
     	 
-	mem_array[0] = 32'b00100000000100000010011100001111;
+	/*mem_array[0] = 32'b00100000000100000010011100001111;
 	mem_array[1] = 32'b00100000000100010000000000000000;
 	mem_array[2] = 32'b00100000000100100000000000000000;
 	mem_array[3] = 32'b00100000000010000000000000000000;
@@ -62,7 +62,7 @@ module IMemBank(input memread, input [31:0] address, output reg [31:0] readdata)
 	mem_array[54] = 32'b00000000000010101000100000100000;
 	mem_array[55] = 32'b00100001000010000000000000000001;
 	mem_array[56] = 32'b00001000000000000000000000101100;
- end
+ end*/
      	
 
   always@(memread, address, mem_array[address])

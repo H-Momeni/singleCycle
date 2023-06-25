@@ -1,17 +1,17 @@
 module process(input clk, reset);
 	//PC
-	wire [31:0] PCin, PCout;
+	wire [15:0] PCin, PCout;
 	PC pc(.clock(clk), .reset(reset), .PCin(PCin), .PCout(PCout));
 
 	//instrcton_memory
-	wire [31:0] inst;
+	wire [15:0] inst;
 	IMemBank imembank(.memread(1), .address(PCin), .readdata(inst));
 	
 	//ControlUnit
 	wire [1:0] reg_dst, mem_to_reg, alu_op;
 	wire jump, beq, bne, mem_read, mem_write, alu_src, reg_write;
 	Control control( 
-		.opcode(inst[31:26]),
+		.opcode(inst[15:12]),
 		.reg_dst(reg_dst),
 		.mem_to_reg(mem_to_reg),
 		.alu_op(alu_op),
