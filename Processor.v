@@ -56,12 +56,10 @@ module process(input clk, reset);
 		//.ShiftOut(ShiftOut));
 
 	// ALUControl
-	wire [3:0] ALUCtl; //*
+	wire [3:0] ALUCtl; 
 	ALUControl alu_cnt(
-		.Opcode(alu_op),
-		.Funct(inst[5:0]),
-		.ALUOp0(alu_op[0]),
-		.ALUOp1(alu_op[1]),
+		.AluOp(alu_op)
+		.Funct(inst[2:0]),
 		.Operation(ALUCtl));
 
 	// ALU

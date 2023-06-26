@@ -9,7 +9,7 @@ always@(opcode, reset) begin
 		reg_dst = 1'b0;  
 		reg_write = 1'b0;
 		alu_src = 1'b0;
-		alu_op = 3'b00; //*
+		alu_op = 3'b001;  
 		mem_read = 1'b0;
 		mem_write = 1'b0;
 		mem_to_reg = 1'b0; 			
@@ -25,7 +25,7 @@ always@(opcode, reset) begin
 				reg_dst = 1'b1;
 				reg_write = 1'b1;
 				alu_src = 1'b0;
-				alu_op = 3'b10; //*
+				alu_op = 3'b000;  
 				mem_read = 1'b0;
 				mem_write = 1'b0;
 				mem_to_reg = 1'b0;
@@ -39,7 +39,7 @@ always@(opcode, reset) begin
 				reg_dst = 1'b0;
 				reg_write = 1'b1;
 				alu_src = 1'b1;
-				alu_op = 3'b10; //*
+				alu_op = 3'b001;  
 				mem_read = 1'b0;
 				mem_write = 1'b0;
 				mem_to_reg = 1'b0;
@@ -54,7 +54,7 @@ always@(opcode, reset) begin
 				reg_dst = 1'b0;
 				reg_write = 1'b1;
 				alu_src = 1'b1;
-				alu_op = 3'b10; //*
+				alu_op = 3'b100;  
 				mem_read = 1'b0;
 				mem_write = 1'b0;
 				mem_to_reg = 1'b0;
@@ -68,7 +68,7 @@ always@(opcode, reset) begin
 				reg_dst = 1'b0;
 				reg_write = 1'b1;
 				alu_src = 1'b1;
-				alu_op = 3'b10; //*
+				alu_op = 3'b010;  
 				mem_read = 1'b0;
 				mem_write = 1'b0;
 				mem_to_reg = 1'b0;
@@ -82,7 +82,7 @@ always@(opcode, reset) begin
 				reg_dst = 1'b0;
 				reg_write = 1'b1;
 				alu_src = 1'b1;
-				alu_op = 3'b10; //*
+				alu_op = 3'b011;  
 				mem_read = 1'b0;
 				mem_write = 1'b0;
 				mem_to_reg = 1'b0;
@@ -96,7 +96,7 @@ always@(opcode, reset) begin
 				reg_dst = 1'b0;
 				reg_write = 1'b1;
 				alu_src = 1'b1;
-				alu_op = 3'b10; //*
+				alu_op = 3'b001;  
 				mem_read = 1'b1;
 				mem_write = 1'b0;
 				mem_to_reg = 1'b1;
@@ -110,7 +110,7 @@ always@(opcode, reset) begin
 				reg_dst = 1'b0; //don't care
 				reg_write = 1'b1;
 				alu_src = 1'b1;
-				alu_op = 3'b10; //*
+				alu_op = 3'b001;  
 				mem_read = 1'b0;
 				mem_write = 1'b1;
 				mem_to_reg = 1'b0;
@@ -124,7 +124,7 @@ always@(opcode, reset) begin
 				reg_dst = 1'b0; //don't care
 				reg_write = 1'b0;
 				alu_src = 1'b0;
-				alu_op = 3'b10; //*
+				alu_op = 3'b101;  
 				mem_read = 1'b0;
 				mem_write = 1'b0;
 				mem_to_reg = 1'b0; //don't care
@@ -138,7 +138,7 @@ always@(opcode, reset) begin
 				reg_dst = 1'b0; //don't care
 				reg_write = 1'b0;
 				alu_src = 1'b0;
-				alu_op = 3'b10; //*
+				alu_op = 3'b101;  
 				mem_read = 1'b0;
 				mem_write = 1'b0;
 				mem_to_reg = 1'b0; //don't care
@@ -152,7 +152,7 @@ always@(opcode, reset) begin
 				reg_dst = 1'b0; //don't care
 				reg_write = 1'b0;
 				alu_src = 1'b0;
-				alu_op = 3'b10; //*
+				alu_op = 3'b101;  
 				mem_read = 1'b0;
 				mem_write = 1'b0;
 				mem_to_reg = 1'b0; //don't care
@@ -166,7 +166,7 @@ always@(opcode, reset) begin
 				reg_dst = 1'b0; //don't care
 				reg_write = 1'b0;
 				alu_src = 1'b0;
-				alu_op = 3'b10; //*
+				alu_op = 3'b101;  
 				mem_read = 1'b0;
 				mem_write = 1'b0;
 				mem_to_reg = 1'b0; //don't care
@@ -180,7 +180,7 @@ always@(opcode, reset) begin
 				reg_dst = 1'b0; //don't care
 				reg_write = 1'b0;
 				alu_src = 1'b0;
-				alu_op = 3'b10; //*
+				alu_op = 3'b001;  
 				mem_read = 1'b0;
 				mem_write = 1'b0;
 				mem_to_reg = 1'b0; //don't care
