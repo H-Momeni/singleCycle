@@ -1,15 +1,14 @@
 module RegFile (clk, readreg1, readreg2, writereg, writedata, RegWrite, readdata1, readdata2);
-  input [4:0] readreg1, readreg2, writereg;
-  input [31:0] writedata;
+  input [2:0] readreg1, readreg2, writereg;
+  input [15:0] writedata;
   input clk, RegWrite;
-  output [31:0] readdata1, readdata2;
+  output [15:0] readdata1, readdata2;
 
-  reg [31:0] regfile [31:0];
+  reg [15:0] regfile [15:0];
 
-	
   always @(posedge clk)
   begin
-    regfile[0]=0;
+    regfile[0]=0; //*
 		  	if (RegWrite) 
 	 				regfile[writereg] <= writedata;
   end
@@ -18,11 +17,11 @@ module RegFile (clk, readreg1, readreg2, writereg, writedata, RegWrite, readdata
   assign readdata2 = regfile[readreg2];
 endmodule;
 
-module testbench;
+module testbench;  //* kolesh
   reg clk,rw;              /* rw=RegWrite */
-  reg [4:0] rr1, rr2, wr;   /* rr1=readreg1, rr2=readreg2, wr=writereg */
-  reg [31:0] wd;  /* wd=writedata */
-  wire [31:0] rd1, rd2; /* rd1=readdata1, rd2=readdata2 */
+  reg [2:0] rr1, rr2, wr;   /* rr1=readreg1, rr2=readreg2, wr=writereg */
+  reg [15:0] wd;  /* wd=writedata */
+  wire [15:0] rd1, rd2; /* rd1=readdata1, rd2=readdata2 */
   
   RegFile u0(clk, rr1, rr2, wr, wd, rw, rd1, rd2);
   

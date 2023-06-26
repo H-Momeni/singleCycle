@@ -34,19 +34,19 @@ module process(input clk, reset);
 	wire [15:0] readData1, readData2 , WriteDataReg;
 	RegFile regfile(
 		.clk(clk),
-		.readreg1(inst[25:21]),
-		.readreg2(inst[20:16]),
+		.readreg1(inst[11:9]),
+		.readreg2(inst[8:6]),
 		.writereg(writeReg),
 		.RegWrite(reg_write),
 		.writedata(WriteDataReg),
 		.readdata1(readData1),
 		.readdata2(readData2));
 	// Sign_extend
-	wire [31:0] extend;
-	Sign_Extension SE( .sign_in(inst[15:0]), .sign_out(extend));
+	wire [15:0] extend;
+	Sign_Extension SE( .sign_in(inst[5:0]), .sign_out(extend));
 	
 	// Alu_Src_Mux
-	wire [31:0] data2;
+	wire [15:0] data2;
 	Mux2 mux2( .readData2(readData2), .extend(extend), .alu_src(alu_src), .data2(data2));
 	
 	// Shift_Left_Jump
@@ -56,7 +56,7 @@ module process(input clk, reset);
 		//.ShiftOut(ShiftOut));
 
 	// ALUControl
-	wire [3:0] ALUCtl;
+	wire [3:0] ALUCtl; //*
 	ALUControl alu_cnt(
 		.Opcode(alu_op),
 		.Funct(inst[5:0]),
