@@ -1,10 +1,10 @@
 module Mux1(a, b, RegDst, WriteReg);
 
-	input [4:0] a;
-	input [4:0] b;
+	input [2:0] a;
+	input [2:0] b;
 	input RegDst;
 	
-	output reg [4:0] WriteReg;
+	output reg [2:0] WriteReg;
 
 	always @ (RegDst, a, b) begin
 		case(RegDst) 

@@ -8,26 +8,30 @@ module process(input clk, reset);
 	IMemBank imembank(.memread(1), .address(PCin), .readdata(inst));
 	
 	//ControlUnit
-	wire [1:0] reg_dst, mem_to_reg, alu_op;
-	wire jump, beq, bne, mem_read, mem_write, alu_src, reg_write;
+	wire [2:0]   alu_op; //*
+	wire mem_to_reg,reg_dst,jump, beq, bne, blt, bgt, mem_read, mem_write, alu_src, reg_write; 
 	Control control( 
 		.opcode(inst[15:12]),
-		.reg_dst(reg_dst),
-		.mem_to_reg(mem_to_reg),
+		.reset(reset)
 		.alu_op(alu_op),
+		.reg_write(reg_write)
+		.reg_dst(reg_dst),
+		.alu_src(alu_src),
+		.mem_write(mem_write),
+		.mem_read(mem_read),
+		.mem_to_reg(mem_to_reg),
 		.jump(jump),
 		.beq(beq),
 		.bne(bne),
-		.mem_read(mem_read),
-		.mem_write(mem_write),
-		.alu_src(alu_src),
-		.reg_write(reg_write));
+		.blt(blt),
+		.bgt(bgt)			
+		);
 	//write_reg_MUX
-	wire [4:0] writeReg;
-	Mux1 mux1(.a(inst[20:16]), .b(inst[15:11]), .RegDst(reg_dst), .WriteReg(writeReg));
+	wire [2:0] writeReg;
+	Mux1 mux1(.a(inst[8:6]), .b(inst[5:3]), .RegDst(reg_dst), .WriteReg(writeReg));
 	
 	// RegFile
-	wire [31:0] readData1, readData2 , WriteDataReg;
+	wire [15:0] readData1, readData2 , WriteDataReg;
 	RegFile regfile(
 		.clk(clk),
 		.readreg1(inst[25:21]),

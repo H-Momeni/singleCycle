@@ -10,6 +10,6 @@ module PC(clock, reset, PCin, PCout);
 		if (reset == 1) 
 			PCout <= 0;
 		else 
-			PCout <= PCin + 1; 
+			PCout <= PCin + 1;  //* +2?
 	end
 endmodule
